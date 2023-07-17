@@ -41,14 +41,14 @@
                 Math.random().toString(36).substring(2, 10);
 
             let username = generateRandomName();
-            const promptMessage = 'Enter your name:';
-            do {
-                username = prompt(promptMessage, username);
-                if (!username || username.startsWith('_') || username.indexOf('<') > -1 || username.indexOf('>') > -1) {
-                    username = '';
-                    promptMessage = 'Invalid input. Enter your name:';
-                }
-            } while (!username)
+            //const promptMessage = 'Enter your name:';
+            //do {
+            //    username = prompt(promptMessage, username);
+            //    if (!username || username.startsWith('_') || username.indexOf('<') > -1 || username.indexOf('>') > -1) {
+            //        username = '';
+            //        promptMessage = 'Invalid input. Enter your name:';
+            //    }
+            //} while (!username)
 
             const messageInput = document.getElementById('message');
             messageInput.focus();
@@ -115,6 +115,10 @@
                     messageInput.focus();
                     event.preventDefault();
                 });
+
+                setInterval(function(){ 
+                    connection.send('broadcastMessage', username, "ping");
+                }, 2000);
             }
 
             function onConnectionError(error) {
