@@ -82,6 +82,7 @@
 
                     var messageBox = document.getElementById('messages');
                     messageBox.appendChild(messageEntry);
+                    messageBox.appendChild("error here :-)");
                     messageBox.scrollTop = messageBox.scrollHeight;
                 };
                 connection.on('broadcastMessage', messageCallback);
@@ -116,9 +117,9 @@
                     event.preventDefault();
                 });
 
-                setInterval(function(){ 
-                    connection.send('broadcastMessage', username, "ping");
-                }, 2000);
+                //setInterval(function(){ 
+                //    connection.send('broadcastMessage', username, "ping");
+                //}, 2000);
             }
 
             function onConnectionError(error) {
